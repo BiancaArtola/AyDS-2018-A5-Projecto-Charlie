@@ -5,6 +5,7 @@ import android.content.Context;
 import ayds.dictionary.charlie.fulllogic.controller.EditUserController;
 import ayds.dictionary.charlie.fulllogic.controller.EditUserControllerImp;
 import ayds.dictionary.charlie.fulllogic.model.UserModel;
+
 import ayds.dictionary.charlie.fulllogic.model.UserModelModule;
 
 public class UserViewModule {
@@ -15,8 +16,7 @@ public class UserViewModule {
     private UserModel userModel;
 
 
-    private UserViewModule() {
-    }
+    private UserViewModule() {}
 
     public static UserViewModule getInstance() {
         if (instance == null) {
