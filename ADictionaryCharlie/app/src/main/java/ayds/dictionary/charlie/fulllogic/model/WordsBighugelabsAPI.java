@@ -1,4 +1,4 @@
-package ayds.dictionary.charlie.fulllogic;
+package ayds.dictionary.charlie.fulllogic.model;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
