@@ -3,36 +3,41 @@ package ayds.dictionary.charlie.fulllogic.view;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import ayds.dictionary.charlie.R;
-import ayds.dictionary.charlie.fulllogic.model.UserModelListener;
+import ayds.dictionary.charlie.fulllogic.model.Service.ModelListener;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity  extends AppCompatActivity implements ayds.dictionary.charlie.fulllogic.view.View {
 
     private EditText editText;
     private Button goButton;
     private TextView textView;
-    private UserViewModule userViewModule;
+    private ViewModule viewModule;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        init();
+        initModule();
+        initListeners();
+    }
 
+    private void init(){
         setContentView(R.layout.activity_main);
-
         editText = findViewById(R.id.editText);
         goButton = findViewById(R.id.goButton);
         textView = findViewById(R.id.textView);
+    }
 
-        userViewModule = UserViewModule.getInstance();
-        userViewModule.startApplication(getApplicationContext());
-
-        initListeners();
+    private void initModule(){
+        viewModule = ViewModule.getInstance();
+        viewModule.startApplication(getApplicationContext());
     }
 
     private void initListeners() {
@@ -41,28 +46,26 @@ public class MainActivity extends AppCompatActivity{
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        String palabraBuscada = editText.getText().toString();
-                        userViewModule.getEditUserController().onEventUpdate(palabraBuscada);
+                        String searchedWord = editText.getText().toString();
+                        viewModule.getController().onEventUpdate(searchedWord);
                     }
                 }).start();
             }
         });
 
-        userViewModule.getUserModel().setListener(new UserModelListener() {
+        viewModule.getModel().setListener(new ModelListener() {
             @Override
-            public void didUpdate() {
-                //userViewModule.getEditUserView().updateResult();
-                updateResult();
+            public void didUpdate(String lastSearch) {
+                updateResult(lastSearch);
             }
         });
     }
-
-    private void updateResult(){
-        final String result = userViewModule.getUserModel().lastSearch();
+    @Override
+    public void updateResult(final String lastSearch){
         textView.post(new Runnable() {
             @Override
             public void run() {
-                textView.setText(Html.fromHtml(result));
+                textView.setText(Html.fromHtml(lastSearch));
             }
         });
     }
