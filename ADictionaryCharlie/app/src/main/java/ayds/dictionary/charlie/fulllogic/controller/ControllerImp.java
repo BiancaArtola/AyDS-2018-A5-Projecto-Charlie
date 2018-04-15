@@ -1,7 +1,5 @@
 package ayds.dictionary.charlie.fulllogic.controller;
 
-import android.util.Log;
-
 import ayds.dictionary.charlie.fulllogic.model.Service.Model;
 
 public class ControllerImp implements Controller {

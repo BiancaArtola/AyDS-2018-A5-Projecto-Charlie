@@ -23,12 +23,12 @@ public class MainActivity  extends AppCompatActivity implements ayds.dictionary.
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        init();
+        initElements();
         initModule();
         initListeners();
     }
 
-    private void init(){
+    private void initElements(){
         setContentView(R.layout.activity_main);
         editText = findViewById(R.id.editText);
         goButton = findViewById(R.id.goButton);

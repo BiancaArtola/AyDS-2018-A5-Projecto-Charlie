@@ -1,7 +1,5 @@
 package ayds.dictionary.charlie.fulllogic.controller;
 
-import ayds.dictionary.charlie.fulllogic.model.Service.Model;
-
 public class ControllerModule {
 
     private static ControllerModule instance;
@@ -18,9 +16,5 @@ public class ControllerModule {
 
     public Controller getController() {
         return controller;
-    }
-
-    public void setModel(Model model){
-        controller.setModel(model);
     }
 }

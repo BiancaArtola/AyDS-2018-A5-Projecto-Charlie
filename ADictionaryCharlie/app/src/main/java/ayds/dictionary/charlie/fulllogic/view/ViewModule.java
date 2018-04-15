@@ -3,7 +3,6 @@ package ayds.dictionary.charlie.fulllogic.view;
 import android.content.Context;
 
 import ayds.dictionary.charlie.fulllogic.controller.Controller;
-import ayds.dictionary.charlie.fulllogic.controller.ControllerImp;
 import ayds.dictionary.charlie.fulllogic.controller.ControllerModule;
 import ayds.dictionary.charlie.fulllogic.model.Service.Model;
 
