@@ -3,16 +3,15 @@ package ayds.dictionary.charlie.fulllogic.view;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import ayds.dictionary.charlie.R;
-import ayds.dictionary.charlie.fulllogic.model.Service.ModelListener;
+import ayds.dictionary.charlie.fulllogic.model.ModelListener;
 
-public class MainActivity  extends AppCompatActivity implements ayds.dictionary.charlie.fulllogic.view.View {
+public class MainActivity  extends AppCompatActivity {
 
     private EditText editText;
     private Button goButton;
@@ -60,12 +59,14 @@ public class MainActivity  extends AppCompatActivity implements ayds.dictionary.
             }
         });
     }
-    @Override
-    public void updateResult(final String lastSearch){
+
+    private void updateResult(final String lastSearch){
+        String searchedWord = editText.getText().toString();
+        final String textToPrint = BoldText.textToHtml(lastSearch,searchedWord);
         textView.post(new Runnable() {
             @Override
             public void run() {
-                textView.setText(Html.fromHtml(lastSearch));
+                textView.setText(Html.fromHtml(textToPrint));
             }
         });
     }

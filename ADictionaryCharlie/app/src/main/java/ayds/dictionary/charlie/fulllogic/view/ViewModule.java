@@ -4,15 +4,15 @@ import android.content.Context;
 
 import ayds.dictionary.charlie.fulllogic.controller.Controller;
 import ayds.dictionary.charlie.fulllogic.controller.ControllerModule;
-import ayds.dictionary.charlie.fulllogic.model.Service.Model;
-
-import ayds.dictionary.charlie.fulllogic.model.Service.ModelModule;
+import ayds.dictionary.charlie.fulllogic.model.Model;
+import ayds.dictionary.charlie.fulllogic.model.ModelModule;
 
 public class ViewModule {
 
     private static ViewModule instance;
     private Controller controller;
     private Model model;
+    private Context applicationContext;
 
 
     private ViewModule() {}
@@ -25,9 +25,9 @@ public class ViewModule {
     }
 
     public void startApplication(Context applicationContext) {
+        this.applicationContext = applicationContext;
         loadModel();
         loadController();
-        loadDatabase(applicationContext);
     }
 
     private void loadModel(){
@@ -35,11 +35,7 @@ public class ViewModule {
     }
 
     private void loadController(){
-        ControllerModule.getInstance().getController().setModel(model);
         controller = ControllerModule.getInstance().getController();
-    }
-    private void loadDatabase(Context applicationContext) {
-        model.createRepository(applicationContext);
     }
 
     public Controller getController() {
@@ -48,5 +44,9 @@ public class ViewModule {
 
     public Model getModel() {
         return model;
+    }
+
+    public Context getApplicationContext() {
+        return applicationContext;
     }
 }

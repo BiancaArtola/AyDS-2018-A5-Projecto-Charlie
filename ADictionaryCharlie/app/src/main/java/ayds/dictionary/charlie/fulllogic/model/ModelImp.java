@@ -1,17 +1,13 @@
-package ayds.dictionary.charlie.fulllogic.model.Service;
-
-import android.content.Context;
-
-import ayds.dictionary.charlie.fulllogic.model.DataBase.Repository;
-import ayds.dictionary.charlie.fulllogic.model.DataBase.RepositoryImp;
-
+package ayds.dictionary.charlie.fulllogic.model;
 
 public class ModelImp implements Model {
 
     private ModelListener listener;
     private Repository repository;
 
-    public ModelImp(){}
+    public ModelImp(Repository repository){
+        this.repository = repository;
+    }
 
     @Override
     public void setListener(ModelListener listener) {
@@ -22,15 +18,6 @@ public class ModelImp implements Model {
     public void searchWord(String searchedWord){
         String result = repository.searchWord(searchedWord);
         notifyListener(result);
-    }
-
-    @Override
-    public void createRepository(Context applicationContext) {
-        initRepository(applicationContext);
-    }
-
-    private void initRepository(Context applicationContext){
-        repository = new RepositoryImp(applicationContext);
     }
 
     private void notifyListener(String lastSearch) {

@@ -1,4 +1,4 @@
-package ayds.dictionary.charlie.fulllogic.model.DataBase;
+package ayds.dictionary.charlie.fulllogic.model;
 
 public interface Repository {
     String searchWord(String searchedWord);

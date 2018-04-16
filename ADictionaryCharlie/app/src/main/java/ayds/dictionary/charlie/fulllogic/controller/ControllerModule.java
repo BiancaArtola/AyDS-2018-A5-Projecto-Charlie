@@ -1,11 +1,13 @@
 package ayds.dictionary.charlie.fulllogic.controller;
 
+import ayds.dictionary.charlie.fulllogic.view.ViewModule;
+
 public class ControllerModule {
 
     private static ControllerModule instance;
     private Controller controller;
 
-    private ControllerModule() { controller = new ControllerImp();}
+    private ControllerModule() { controller = new ControllerImp(ViewModule.getInstance().getModel());}
 
     public static ControllerModule getInstance() {
         if (instance == null) {
