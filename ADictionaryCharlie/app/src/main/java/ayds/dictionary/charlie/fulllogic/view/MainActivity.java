@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import ayds.dictionary.charlie.R;
 import ayds.dictionary.charlie.fulllogic.model.ModelListener;
 

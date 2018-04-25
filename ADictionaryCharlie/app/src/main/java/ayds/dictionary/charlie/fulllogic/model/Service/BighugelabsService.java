@@ -12,6 +12,8 @@ public class BighugelabsService implements Service {
 
     private WordsBighugelabsAPI wikiAPI;
     private Transform transform;
+    private final String baseUrl = "http://words.bighugelabs.com/api/2/";
+    private final String sinResultado = "No Results";
 
     public BighugelabsService(Transform transform){
         this.transform = transform;
@@ -20,7 +22,7 @@ public class BighugelabsService implements Service {
 
     private void createRetrofit(){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://words.bighugelabs.com/api/2/")
+                .baseUrl(baseUrl)
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .build();
         createAPI(retrofit);
@@ -37,10 +39,8 @@ public class BighugelabsService implements Service {
         try{
             callResponse = wikiAPI.getTerm(searchedWord).execute();
 
-            Log.e("**", "JSON: " + callResponse.body());
-
             if (callResponse.body() == null) {
-                result = "No Results";
+                result = sinResultado;
             } else {
                 result = transform.JSONtoString(callResponse,searchedWord);
             }

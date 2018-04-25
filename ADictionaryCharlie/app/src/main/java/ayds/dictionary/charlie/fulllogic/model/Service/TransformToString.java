@@ -7,9 +7,7 @@ import com.google.gson.JsonObject;
 
 import retrofit2.Response;
 
-public class TransformToString implements Transform{
-
-    public TransformToString(){}
+class TransformToString implements Transform{
 
     @Override
     public String JSONtoString(Response<String> callResponse, String searchedWord) {

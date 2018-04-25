@@ -3,12 +3,13 @@ package ayds.dictionary.charlie.fulllogic.model;
 import ayds.dictionary.charlie.fulllogic.model.DataBase.DataBase;
 import ayds.dictionary.charlie.fulllogic.model.Service.Service;
 
-public class RepositoryImp implements Repository{
+class RepositoryImp implements Repository{
 
     private DataBase dataBase;
     private Service service;
+    private final String prefijo = "[*]"; 
 
-    public RepositoryImp(DataBase dataBase, Service service){
+    RepositoryImp(DataBase dataBase, Service service){
         this.dataBase = dataBase;
         this.service = service;
     }
@@ -17,7 +18,7 @@ public class RepositoryImp implements Repository{
     public String searchWord(String searchedWord) {
         String result = dataBase.getMeaning(searchedWord);
         if (result != null) { // exists in DB
-            result = "[*]" + result;
+            result = prefijo + result;
         } else {
             result = service.searchWord(searchedWord);
             dataBase.saveTerm(searchedWord,result);

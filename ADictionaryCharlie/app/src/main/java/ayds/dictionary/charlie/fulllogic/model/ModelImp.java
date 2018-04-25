@@ -1,11 +1,11 @@
 package ayds.dictionary.charlie.fulllogic.model;
 
-public class ModelImp implements Model {
+class ModelImp implements Model {
 
     private ModelListener listener;
     private Repository repository;
 
-    public ModelImp(Repository repository){
+    ModelImp(Repository repository){
         this.repository = repository;
     }
 
