@@ -1,6 +1,6 @@
-package ayds.dictionary.charlie.fulllogic.controller;
+package ayds.dictionary.charlie.controller;
 
-import ayds.dictionary.charlie.fulllogic.model.Model;
+import ayds.dictionary.charlie.model.Model;
 
 class ControllerImp implements Controller {
 

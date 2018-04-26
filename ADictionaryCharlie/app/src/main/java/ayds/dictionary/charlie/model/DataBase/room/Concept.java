@@ -1,4 +1,4 @@
-package ayds.dictionary.charlie.fulllogic.model.DataBase.room;
+package ayds.dictionary.charlie.model.DataBase.room;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;

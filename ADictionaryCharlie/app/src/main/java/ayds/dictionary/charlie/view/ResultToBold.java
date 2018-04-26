@@ -1,4 +1,4 @@
-package ayds.dictionary.charlie.fulllogic.view;
+package ayds.dictionary.charlie.view;
 
 class ResultToBold {
 

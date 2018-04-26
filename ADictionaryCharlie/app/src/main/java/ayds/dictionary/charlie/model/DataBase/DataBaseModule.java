@@ -1,8 +1,8 @@
-package ayds.dictionary.charlie.fulllogic.model.DataBase;
+package ayds.dictionary.charlie.model.DataBase;
 
 import android.content.Context;
 
-import ayds.dictionary.charlie.fulllogic.view.ViewModule;
+import ayds.dictionary.charlie.view.ViewModule;
 
 public class DataBaseModule {
     private static DataBaseModule instance;

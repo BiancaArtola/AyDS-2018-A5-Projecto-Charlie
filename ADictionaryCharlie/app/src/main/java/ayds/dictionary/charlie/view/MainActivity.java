@@ -1,4 +1,4 @@
-package ayds.dictionary.charlie.fulllogic.view;
+package ayds.dictionary.charlie.view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,8 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import ayds.dictionary.charlie.R;
-import ayds.dictionary.charlie.fulllogic.model.ErrorListener;
-import ayds.dictionary.charlie.fulllogic.model.ModelListener;
+import ayds.dictionary.charlie.model.ErrorListener;
+import ayds.dictionary.charlie.model.ModelListener;
 
 public class MainActivity  extends AppCompatActivity {
 

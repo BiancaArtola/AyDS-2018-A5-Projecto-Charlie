@@ -1,9 +1,9 @@
-package ayds.dictionary.charlie.fulllogic.model;
+package ayds.dictionary.charlie.model;
 
-import ayds.dictionary.charlie.fulllogic.model.DataBase.DataBase;
-import ayds.dictionary.charlie.fulllogic.model.DataBase.DataBaseModule;
-import ayds.dictionary.charlie.fulllogic.model.Service.Service;
-import ayds.dictionary.charlie.fulllogic.model.Service.ServiceModule;
+import ayds.dictionary.charlie.model.DataBase.DataBase;
+import ayds.dictionary.charlie.model.DataBase.DataBaseModule;
+import ayds.dictionary.charlie.model.Service.Service;
+import ayds.dictionary.charlie.model.Service.ServiceModule;
 
 public class ModelModule {
 

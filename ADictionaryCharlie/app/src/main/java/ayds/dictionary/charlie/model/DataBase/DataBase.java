@@ -1,4 +1,4 @@
-package ayds.dictionary.charlie.fulllogic.model.DataBase;
+package ayds.dictionary.charlie.model.DataBase;
 
 public interface DataBase {
     String getMeaning(String searchedWord);

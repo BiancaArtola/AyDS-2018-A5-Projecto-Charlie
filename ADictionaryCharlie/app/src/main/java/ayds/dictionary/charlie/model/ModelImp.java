@@ -1,4 +1,4 @@
-package ayds.dictionary.charlie.fulllogic.model;
+package ayds.dictionary.charlie.model;
 
 class ModelImp implements Model {
 

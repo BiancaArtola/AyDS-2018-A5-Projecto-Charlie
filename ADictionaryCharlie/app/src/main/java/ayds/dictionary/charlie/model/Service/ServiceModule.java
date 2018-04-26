@@ -1,4 +1,4 @@
-package ayds.dictionary.charlie.fulllogic.model.Service;
+package ayds.dictionary.charlie.model.Service;
 
 public class ServiceModule {
     private static ServiceModule instance;

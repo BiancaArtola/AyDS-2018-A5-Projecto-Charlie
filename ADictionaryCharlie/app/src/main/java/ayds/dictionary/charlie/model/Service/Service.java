@@ -1,6 +1,6 @@
-package ayds.dictionary.charlie.fulllogic.model.Service;
+package ayds.dictionary.charlie.model.Service;
 
-import ayds.dictionary.charlie.fulllogic.model.APIConnectionException;
+import ayds.dictionary.charlie.model.APIConnectionException;
 
 public interface Service {
     String searchWord(String searchedWord) throws APIConnectionException;

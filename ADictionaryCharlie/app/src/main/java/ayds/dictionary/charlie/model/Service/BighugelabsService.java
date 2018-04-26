@@ -1,8 +1,8 @@
-package ayds.dictionary.charlie.fulllogic.model.Service;
+package ayds.dictionary.charlie.model.Service;
 
 import java.io.IOException;
 
-import ayds.dictionary.charlie.fulllogic.model.APIConnectionException;
+import ayds.dictionary.charlie.model.APIConnectionException;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;

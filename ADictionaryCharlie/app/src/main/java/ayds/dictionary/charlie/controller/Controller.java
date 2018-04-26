@@ -1,4 +1,4 @@
-package ayds.dictionary.charlie.fulllogic.controller;
+package ayds.dictionary.charlie.controller;
 
 public interface Controller {
     void onEventUpdate(String searchedWord);

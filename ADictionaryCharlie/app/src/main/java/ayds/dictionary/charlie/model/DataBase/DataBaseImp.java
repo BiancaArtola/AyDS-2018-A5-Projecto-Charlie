@@ -1,10 +1,10 @@
-package ayds.dictionary.charlie.fulllogic.model.DataBase;
+package ayds.dictionary.charlie.model.DataBase;
 
 import android.arch.persistence.room.Room;
 import android.content.Context;
 
-import ayds.dictionary.charlie.fulllogic.model.DataBase.room.Concept;
-import ayds.dictionary.charlie.fulllogic.model.DataBase.room.ConceptDataBase;
+import ayds.dictionary.charlie.model.DataBase.room.Concept;
+import ayds.dictionary.charlie.model.DataBase.room.ConceptDataBase;
 
 class DataBaseImp implements DataBase {
 

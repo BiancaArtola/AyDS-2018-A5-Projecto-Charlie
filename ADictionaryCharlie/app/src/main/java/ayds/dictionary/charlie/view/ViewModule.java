@@ -1,11 +1,11 @@
-package ayds.dictionary.charlie.fulllogic.view;
+package ayds.dictionary.charlie.view;
 
 import android.content.Context;
 
-import ayds.dictionary.charlie.fulllogic.controller.Controller;
-import ayds.dictionary.charlie.fulllogic.controller.ControllerModule;
-import ayds.dictionary.charlie.fulllogic.model.Model;
-import ayds.dictionary.charlie.fulllogic.model.ModelModule;
+import ayds.dictionary.charlie.controller.Controller;
+import ayds.dictionary.charlie.controller.ControllerModule;
+import ayds.dictionary.charlie.model.Model;
+import ayds.dictionary.charlie.model.ModelModule;
 
 public class ViewModule {
 

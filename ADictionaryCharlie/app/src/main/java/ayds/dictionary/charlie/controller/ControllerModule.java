@@ -1,6 +1,6 @@
-package ayds.dictionary.charlie.fulllogic.controller;
+package ayds.dictionary.charlie.controller;
 
-import ayds.dictionary.charlie.fulllogic.view.ViewModule;
+import ayds.dictionary.charlie.view.ViewModule;
 
 public class ControllerModule {
 
