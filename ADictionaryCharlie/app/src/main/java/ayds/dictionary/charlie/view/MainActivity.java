@@ -8,13 +8,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import ayds.dictionary.charlie.R;
+import ayds.dictionary.charlie.fulllogic.model.ErrorListener;
 import ayds.dictionary.charlie.fulllogic.model.ModelListener;
 
 public class MainActivity  extends AppCompatActivity {
 
-    private EditText editText;
+    private EditText searchField;
     private Button goButton;
-    private TextView textView;
+    private TextView resultField;
     private ViewModule viewModule;
 
 
@@ -28,9 +29,9 @@ public class MainActivity  extends AppCompatActivity {
 
     private void initElements(){
         setContentView(R.layout.activity_main);
-        editText = findViewById(R.id.editText);
+        searchField = findViewById(R.id.searchField);
         goButton = findViewById(R.id.goButton);
-        textView = findViewById(R.id.textView);
+        resultField = findViewById(R.id.resultField);
     }
 
     private void initModule(){
@@ -44,7 +45,7 @@ public class MainActivity  extends AppCompatActivity {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        String searchedWord = editText.getText().toString();
+                        String searchedWord = searchField.getText().toString();
                         viewModule.getController().onEventUpdate(searchedWord);
                     }
                 }).start();
@@ -57,15 +58,31 @@ public class MainActivity  extends AppCompatActivity {
                 updateResult(lastSearch);
             }
         });
+
+        viewModule.getModel().setErrorListener(new ErrorListener() {
+            @Override
+            public void notifyError() {
+                showErrorMessage();
+            }
+        });
     }
 
     private void updateResult(final String lastSearch){
-        String searchedWord = editText.getText().toString();
-        final String textToPrint = BoldText.textToHtml(lastSearch,searchedWord);
-        textView.post(new Runnable() {
+        String searchedWord = searchField.getText().toString();
+        final String textToPrint = ResultToBold.textToHtml(lastSearch,searchedWord);
+        resultField.post(new Runnable() {
             @Override
             public void run() {
-                textView.setText(Html.fromHtml(textToPrint));
+                resultField.setText(Html.fromHtml(textToPrint));
+            }
+        });
+    }
+
+    private void showErrorMessage(){
+        resultField.post(new Runnable() {
+            @Override
+            public void run() {
+                resultField.setText(R.string.internet_error);
             }
         });
     }

@@ -1,5 +1,5 @@
 package ayds.dictionary.charlie.fulllogic.model;
 
 public interface Repository {
-    String searchWord(String searchedWord);
+    String searchWord(String searchedWord) throws APIConnectionException;
 }

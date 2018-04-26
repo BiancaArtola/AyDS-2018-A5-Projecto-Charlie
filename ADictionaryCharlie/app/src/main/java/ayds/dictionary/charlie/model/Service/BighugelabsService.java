@@ -1,21 +1,20 @@
 package ayds.dictionary.charlie.fulllogic.model.Service;
 
-import android.util.Log;
-
 import java.io.IOException;
 
+import ayds.dictionary.charlie.fulllogic.model.APIConnectionException;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
-public class BighugelabsService implements Service {
+class BighugelabsService implements Service {
 
     private WordsBighugelabsAPI wikiAPI;
     private Transform transform;
     private final String baseUrl = "http://words.bighugelabs.com/api/2/";
-    private final String sinResultado = "No Results";
+    private final String noResult = "No Results";
 
-    public BighugelabsService(Transform transform){
+    BighugelabsService(Transform transform){
         this.transform = transform;
         createRetrofit();
     }
@@ -33,19 +32,20 @@ public class BighugelabsService implements Service {
     }
 
     @Override
-    public String searchWord(String searchedWord) {
+    public String searchWord(String searchedWord) throws APIConnectionException {
         String result = "";
         Response<String> callResponse;
         try{
             callResponse = wikiAPI.getTerm(searchedWord).execute();
-
             if (callResponse.body() == null) {
-                result = sinResultado;
+                result = noResult;
             } else {
-                result = transform.JSONtoString(callResponse,searchedWord);
+                result = transform.ResultToString(callResponse.body(), searchedWord);
             }
         } catch (IOException e1) {
             e1.printStackTrace();
+            throw new APIConnectionException("Connection Problem!");
+
         }
         return result;
     }

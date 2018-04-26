@@ -5,13 +5,12 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-import retrofit2.Response;
 
-class TransformToString implements Transform{
+class JSONToString implements Transform{
 
     @Override
-    public String JSONtoString(Response<String> callResponse, String searchedWord) {
-        JsonObject jobj = createJSON(callResponse);
+    public String ResultToString(String body, String searchedWord) {
+        JsonObject jobj = createJSON(body);
         StringBuilder extract = new StringBuilder();
 
         searchNouns(jobj, extract);
@@ -22,9 +21,9 @@ class TransformToString implements Transform{
         return result;
     }
 
-    private JsonObject createJSON(Response<String> callResponse){
+    private JsonObject createJSON(String body){
         Gson gson = new Gson();
-        return gson.fromJson(callResponse.body(), JsonObject.class);
+        return gson.fromJson(body, JsonObject.class);
     }
 
     private void searchNouns(JsonObject jobj, StringBuilder extract){

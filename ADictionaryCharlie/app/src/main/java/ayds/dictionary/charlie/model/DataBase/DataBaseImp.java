@@ -6,11 +6,11 @@ import android.content.Context;
 import ayds.dictionary.charlie.fulllogic.model.DataBase.room.Concept;
 import ayds.dictionary.charlie.fulllogic.model.DataBase.room.ConceptDataBase;
 
-public class DataBaseImp implements DataBase {
+class DataBaseImp implements DataBase {
 
   private static ConceptDataBase db;
 
-  public DataBaseImp(Context context){
+  DataBaseImp(Context context){
     createDatabase(context);
   }
 

@@ -1,6 +1,6 @@
 package ayds.dictionary.charlie.fulllogic.view;
 
-class BoldText {
+class ResultToBold {
 
     public static String textToHtml(String result, String searchedWord){
         StringBuilder builder = new StringBuilder();

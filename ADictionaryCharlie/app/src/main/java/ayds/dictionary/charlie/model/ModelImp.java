@@ -3,7 +3,9 @@ package ayds.dictionary.charlie.fulllogic.model;
 class ModelImp implements Model {
 
     private ModelListener listener;
+    private ErrorListener errorListener;
     private Repository repository;
+
 
     ModelImp(Repository repository){
         this.repository = repository;
@@ -15,14 +17,29 @@ class ModelImp implements Model {
     }
 
     @Override
+    public void setErrorListener(ErrorListener errorListener) {
+        this.errorListener = errorListener;
+    }
+
+    @Override
     public void searchWord(String searchedWord){
-        String result = repository.searchWord(searchedWord);
-        notifyListener(result);
+        try {
+            String result = repository.searchWord(searchedWord);
+            notifyListener(result);
+        } catch (APIConnectionException e){
+            notifyErrorListener();
+        }
     }
 
     private void notifyListener(String lastSearch) {
         if (listener != null) {
             listener.didUpdate(lastSearch);
+        }
+    }
+
+    private void notifyErrorListener(){
+        if (errorListener != null){
+            errorListener.notifyError();
         }
     }
 }
