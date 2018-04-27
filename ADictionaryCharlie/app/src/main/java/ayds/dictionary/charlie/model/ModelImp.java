@@ -1,5 +1,7 @@
 package ayds.dictionary.charlie.model;
 
+import android.util.Log;
+
 class ModelImp implements Model {
 
     private ModelListener listener;
@@ -24,12 +26,29 @@ class ModelImp implements Model {
     @Override
     public void searchWord(String searchedWord){
         try {
-            String result = repository.searchWord(searchedWord);
-            notifyListener(result);
+            boolean isCorrect = checkWordWithoutSymbols(searchedWord);
+            if (isCorrect){
+                String result = repository.searchWord(searchedWord);
+                notifyListener(result);
+            }
         } catch (APIConnectionException e){
             notifyErrorListener();
         }
     }
+
+    private boolean checkWordWithoutSymbols(String searchWord){
+        char letterOfSearchWord=' ';
+        boolean isWordWithoutSymbols = true;
+        for(int i=0; i< searchWord.length() && isWordWithoutSymbols;i++){
+            letterOfSearchWord = searchWord.charAt(i);
+            if(!Character.isLetter(letterOfSearchWord)){
+                isWordWithoutSymbols=false;
+                Log.e("Letra", "--"+isWordWithoutSymbols+"");
+            }
+        }
+        return isWordWithoutSymbols;
+    }
+
 
     private void notifyListener(String lastSearch) {
         if (listener != null) {
