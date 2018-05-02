@@ -8,8 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import ayds.dictionary.charlie.R;
-import ayds.dictionary.charlie.model.ErrorListener;
-import ayds.dictionary.charlie.model.ModelListener;
+import ayds.dictionary.charlie.model.Errors.ErrorListener;
+import ayds.dictionary.charlie.model.NewTermListener;
 
 public class MainActivity  extends AppCompatActivity {
 
@@ -52,7 +52,7 @@ public class MainActivity  extends AppCompatActivity {
             }
         });
 
-        viewModule.getModel().setListener(new ModelListener() {
+        viewModule.getModel().setNewTermListener(new NewTermListener() {
             @Override
             public void didUpdate(String lastSearch) {
                 updateResult(lastSearch);
@@ -61,8 +61,8 @@ public class MainActivity  extends AppCompatActivity {
 
         viewModule.getModel().setErrorListener(new ErrorListener() {
             @Override
-            public void notifyError() {
-                showErrorMessage();
+            public void notifyError(Exception exception) {
+                showErrorMessage(exception.getMessage());
             }
         });
     }
@@ -78,11 +78,11 @@ public class MainActivity  extends AppCompatActivity {
         });
     }
 
-    private void showErrorMessage(){
+    private void showErrorMessage(final String message){
         resultField.post(new Runnable() {
             @Override
             public void run() {
-                resultField.setText(R.string.internet_error);
+                resultField.setText(message);
             }
         });
     }

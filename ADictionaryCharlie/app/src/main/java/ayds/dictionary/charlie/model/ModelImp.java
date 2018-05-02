@@ -1,64 +1,39 @@
 package ayds.dictionary.charlie.model;
 
-import android.util.Log;
+import ayds.dictionary.charlie.model.Errors.ErrorHandler;
+import ayds.dictionary.charlie.model.Errors.ErrorListener;
 
 class ModelImp implements Model {
 
-    private ModelListener listener;
-    private ErrorListener errorListener;
+    private NewTermListener listener;
     private Repository repository;
+    private ErrorHandler errorHandler;
 
 
-    ModelImp(Repository repository){
+    ModelImp(Repository repository, ErrorHandler errorHandler){
         this.repository = repository;
+        this.errorHandler = errorHandler;
     }
 
     @Override
-    public void setListener(ModelListener listener) {
+    public void setNewTermListener(NewTermListener listener) {
         this.listener = listener;
     }
 
     @Override
     public void setErrorListener(ErrorListener errorListener) {
-        this.errorListener = errorListener;
+        errorHandler.setErrorListener(errorListener);
     }
 
     @Override
     public void searchWord(String searchedWord){
-        try {
-            boolean isCorrect = checkWordWithoutSymbols(searchedWord);
-            if (isCorrect){
-                String result = repository.searchWord(searchedWord);
-                notifyListener(result);
-            }
-        } catch (APIConnectionException e){
-            notifyErrorListener();
-        }
+        String result = repository.searchWord(searchedWord);
+        notifyListener(result);
     }
-
-    private boolean checkWordWithoutSymbols(String searchWord){
-        char letterOfSearchWord=' ';
-        boolean isWordWithoutSymbols = true;
-        for(int i=0; i< searchWord.length() && isWordWithoutSymbols;i++){
-            letterOfSearchWord = searchWord.charAt(i);
-            if(!Character.isLetter(letterOfSearchWord)){
-                isWordWithoutSymbols=false;
-                Log.e("Letra", "--"+isWordWithoutSymbols+"");
-            }
-        }
-        return isWordWithoutSymbols;
-    }
-
 
     private void notifyListener(String lastSearch) {
         if (listener != null) {
             listener.didUpdate(lastSearch);
-        }
-    }
-
-    private void notifyErrorListener(){
-        if (errorListener != null){
-            errorListener.notifyError();
         }
     }
 }

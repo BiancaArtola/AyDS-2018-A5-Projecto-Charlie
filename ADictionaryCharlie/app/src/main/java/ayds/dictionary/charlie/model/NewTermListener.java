@@ -1,5 +1,5 @@
 package ayds.dictionary.charlie.model;
 
-public interface ModelListener {
+public interface NewTermListener {
     void didUpdate(String lastSearch);
 }

@@ -2,7 +2,7 @@ package ayds.dictionary.charlie.model.Service;
 
 import java.io.IOException;
 
-import ayds.dictionary.charlie.model.APIConnectionException;
+import ayds.dictionary.charlie.model.TypesOfException.APIConnectionException;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
