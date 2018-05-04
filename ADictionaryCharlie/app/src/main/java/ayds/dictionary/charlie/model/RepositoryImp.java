@@ -32,7 +32,7 @@ class RepositoryImp implements Repository{
                 } else {
                     result = service.searchWord(searchedWord);
                     if (!result.equals(noResult))
-                        dataBase.saveTerm(searchedWord, result);
+                        dataBase.saveTerm(searchedWord, result, service.getSource());  // PREGUNTAR !!!!!!!!!
                 }
             }
         } catch (Exception exception){

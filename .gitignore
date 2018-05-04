@@ -1575,3 +1575,7 @@ ADictionaryCharlie/app/build/intermediates/classes/debug/ayds/dictionary/charlie
 ADictionaryCharlie/app/build/intermediates/classes/debug/ayds/dictionary/charlie/model/TypesOfException/APIConnectionException.class
 ADictionaryCharlie/app/build/intermediates/classes/debug/ayds/dictionary/charlie/model/Errors/ErrorListener.class
 ADictionaryCharlie/app/build/intermediates/classes/debug/ayds/dictionary/charlie/model/Errors/ErrorHandlerImp.class
+ADictionaryCharlie/app/build/intermediates/transforms/dexBuilder/debug/23/ayds/dictionary/charlie/model/TermModelImp.dex
+ADictionaryCharlie/app/build/intermediates/transforms/dexBuilder/debug/23/ayds/dictionary/charlie/model/TermModel.dex
+ADictionaryCharlie/app/build/intermediates/classes/debug/ayds/dictionary/charlie/model/TermModelImp.class
+ADictionaryCharlie/app/build/intermediates/classes/debug/ayds/dictionary/charlie/model/TermModel.class

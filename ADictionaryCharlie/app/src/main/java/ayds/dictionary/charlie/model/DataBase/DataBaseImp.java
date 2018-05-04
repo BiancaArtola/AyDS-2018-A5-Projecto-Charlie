@@ -27,11 +27,11 @@ class DataBaseImp implements DataBase {
                               ConceptDataBase.class, "dictionary.db").build();
   }
 
-  public void saveTerm(String term, String meaning) {
+  public void saveTerm(String term, String meaning, int source) {
     Concept concept =  new Concept();
     concept.setTerm(term);
     concept.setMeaning(meaning);
-    concept.setSource(1);
+    concept.setSource(source);  // PREGUNTAR !!!!!!!!!
     db.termDao().insert(concept);
   }
 

@@ -6,6 +6,7 @@ public class ServiceModule {
 
     private ServiceModule() {
         Transform transform = new JSONToString();
+
         service = new BighugelabsService(transform);
     }
 
