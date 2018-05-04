@@ -1,9 +1,8 @@
-package ayds.dictionary.charlie.fulllogic;
+package ayds.dictionary.charlie.model.Service;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 
 // https://words.bighugelabs.com/api.php
 public interface WordsBighugelabsAPI {
