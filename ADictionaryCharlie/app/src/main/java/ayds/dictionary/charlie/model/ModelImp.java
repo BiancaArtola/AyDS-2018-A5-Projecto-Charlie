@@ -28,7 +28,8 @@ class ModelImp implements Model {
     @Override
     public void searchWord(String searchedWord){
         String result = repository.searchWord(searchedWord);
-        notifyListener(result);
+        if (result != "" && result != null)
+            notifyListener(result);
     }
 
     private void notifyListener(String lastSearch) {

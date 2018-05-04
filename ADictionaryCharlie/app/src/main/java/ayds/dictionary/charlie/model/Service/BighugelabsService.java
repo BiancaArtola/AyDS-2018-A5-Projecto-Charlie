@@ -13,6 +13,7 @@ class BighugelabsService implements Service {
     private Transform transform;
     private final String baseUrl = "http://words.bighugelabs.com/api/2/";
     private final String noResult = "No Results";
+    private final String connectionProblem = "No Connection Detected!";
 
     BighugelabsService(Transform transform){
         this.transform = transform;
@@ -44,7 +45,7 @@ class BighugelabsService implements Service {
             }
         } catch (IOException e1) {
             e1.printStackTrace();
-            throw new APIConnectionException("Connection Problem!");
+            throw new APIConnectionException(connectionProblem);
 
         }
         return result;

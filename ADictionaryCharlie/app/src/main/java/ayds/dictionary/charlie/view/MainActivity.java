@@ -62,7 +62,8 @@ public class MainActivity  extends AppCompatActivity {
         viewModule.getModel().setErrorListener(new ErrorListener() {
             @Override
             public void notifyError(Exception exception) {
-                showErrorMessage(exception.getMessage());
+                String msgToPrint = exception.getMessage();
+                showErrorMessage(msgToPrint);
             }
         });
     }

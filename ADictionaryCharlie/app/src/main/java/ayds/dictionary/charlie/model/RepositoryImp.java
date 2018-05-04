@@ -1,7 +1,5 @@
 package ayds.dictionary.charlie.model;
 
-import android.util.Log;
-
 import ayds.dictionary.charlie.model.DataBase.DataBase;
 import ayds.dictionary.charlie.model.Errors.ErrorHandler;
 import ayds.dictionary.charlie.model.Service.Service;
@@ -14,6 +12,7 @@ class RepositoryImp implements Repository{
     private ErrorHandler errorHandler;
     private final String prefijo = "[*]";
     private final String noResult = "No Results";
+    private final String badWordProblem = "Incorrect Word!";
 
     RepositoryImp(DataBase dataBase, Service service, ErrorHandler errorHandler){
         this.dataBase = dataBase;
@@ -43,17 +42,16 @@ class RepositoryImp implements Repository{
     }
 
     private boolean checkWordWithoutSymbols(String searchWord) throws BadWordException {
-        char letterOfSearchWord=' ';
+        char letterOfSearchWord = ' ';
         boolean isWordWithoutSymbols = true;
-        for(int i=0; i< searchWord.length() && isWordWithoutSymbols;i++){
+        for(int i=0; i < searchWord.length() && isWordWithoutSymbols; i++){
             letterOfSearchWord = searchWord.charAt(i);
             if(!Character.isLetter(letterOfSearchWord)){
-                isWordWithoutSymbols=false;
-                Log.e("Letra", "--"+isWordWithoutSymbols+"");
+                isWordWithoutSymbols = false;
             }
         }
         if(!isWordWithoutSymbols){
-            throw new BadWordException("Incorrect Word!");
+            throw new BadWordException(badWordProblem);
         }
         return isWordWithoutSymbols;
     }
