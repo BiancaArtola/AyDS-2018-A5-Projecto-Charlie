@@ -1,17 +1,17 @@
 package ayds.dictionary.charlie.controller;
 
-import ayds.dictionary.charlie.model.Model;
+import ayds.dictionary.charlie.model.TermModel;
 
 class ControllerImp implements Controller {
 
-    private Model model;
+    private TermModel termModel;
 
-    ControllerImp(Model model) {
-        this.model = model;
+    ControllerImp(TermModel termModel) {
+        this.termModel = termModel;
     }
 
     @Override
     public void onEventUpdate(String searchedWord) {
-        model.searchWord(searchedWord);
+        termModel.searchWord(searchedWord);
     }
 }

@@ -10,14 +10,14 @@ import ayds.dictionary.charlie.model.Service.ServiceModule;
 public class ModelModule {
 
     private static ModelModule instance;
-    private Model model;
+    private TermModel termModel;
 
     private ModelModule() {
         DataBase dataBase = DataBaseModule.getInstance().getDataBase();
         Service service = ServiceModule.getInstance().getService();
         ErrorHandler errorHandler = ErrorModule.getInstance().getErrorHandler();
         Repository repository = new RepositoryImp(dataBase,service,errorHandler);
-        model =  new ModelImp(repository,errorHandler);
+        termModel =  new TermModelImp(repository,errorHandler);
     }
 
     public static ModelModule getInstance() {
@@ -27,7 +27,7 @@ public class ModelModule {
         return instance;
     }
 
-    public Model getModel() {
-        return model;
+    public TermModel getTermModel() {
+        return termModel;
     }
 }

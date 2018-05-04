@@ -4,14 +4,14 @@ import android.content.Context;
 
 import ayds.dictionary.charlie.controller.Controller;
 import ayds.dictionary.charlie.controller.ControllerModule;
-import ayds.dictionary.charlie.model.Model;
+import ayds.dictionary.charlie.model.TermModel;
 import ayds.dictionary.charlie.model.ModelModule;
 
 public class ViewModule {
 
     private static ViewModule instance;
     private Controller controller;
-    private Model model;
+    private TermModel termModel;
     private Context applicationContext;
 
 
@@ -31,7 +31,7 @@ public class ViewModule {
     }
 
     private void loadModel(){
-        model = ModelModule.getInstance().getModel();
+        termModel = ModelModule.getInstance().getTermModel();
     }
 
     private void loadController(){
@@ -42,8 +42,8 @@ public class ViewModule {
         return controller;
     }
 
-    public Model getModel() {
-        return model;
+    public TermModel getTermModel() {
+        return termModel;
     }
 
     public Context getApplicationContext() {

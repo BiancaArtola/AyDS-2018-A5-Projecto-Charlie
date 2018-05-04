@@ -18,7 +18,6 @@ public class MainActivity  extends AppCompatActivity {
     private TextView resultField;
     private ViewModule viewModule;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -52,14 +51,14 @@ public class MainActivity  extends AppCompatActivity {
             }
         });
 
-        viewModule.getModel().setNewTermListener(new NewTermListener() {
+        viewModule.getTermModel().setNewTermListener(new NewTermListener() {
             @Override
             public void didUpdate(String lastSearch) {
                 updateResult(lastSearch);
             }
         });
 
-        viewModule.getModel().setErrorListener(new ErrorListener() {
+        viewModule.getTermModel().setErrorListener(new ErrorListener() {
             @Override
             public void notifyError(Exception exception) {
                 String msgToPrint = exception.getMessage();

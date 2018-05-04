@@ -7,7 +7,7 @@ public class ControllerModule {
     private static ControllerModule instance;
     private Controller controller;
 
-    private ControllerModule() { controller = new ControllerImp(ViewModule.getInstance().getModel());}
+    private ControllerModule() { controller = new ControllerImp(ViewModule.getInstance().getTermModel());}
 
     public static ControllerModule getInstance() {
         if (instance == null) {

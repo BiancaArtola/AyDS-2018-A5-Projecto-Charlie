@@ -3,14 +3,14 @@ package ayds.dictionary.charlie.model;
 import ayds.dictionary.charlie.model.Errors.ErrorHandler;
 import ayds.dictionary.charlie.model.Errors.ErrorListener;
 
-class ModelImp implements Model {
+class TermModelImp implements TermModel {
 
     private NewTermListener listener;
     private Repository repository;
     private ErrorHandler errorHandler;
 
 
-    ModelImp(Repository repository, ErrorHandler errorHandler){
+    TermModelImp(Repository repository, ErrorHandler errorHandler){
         this.repository = repository;
         this.errorHandler = errorHandler;
     }
