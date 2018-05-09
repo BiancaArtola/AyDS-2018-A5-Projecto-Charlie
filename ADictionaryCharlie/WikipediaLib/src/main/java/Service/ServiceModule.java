@@ -1,6 +1,5 @@
 package Service;
 
-
 public class ServiceModule {
     private static ServiceModule instance;
     private Service service;

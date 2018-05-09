@@ -37,7 +37,6 @@ public class MainActivity  extends AppCompatActivity {
         resultField = findViewById(R.id.resultField);
         progressBar = findViewById(R.id.progressBar);
         source = findViewById(R.id.source);
-
         progressBar.setVisibility(View.GONE);
     }
 
