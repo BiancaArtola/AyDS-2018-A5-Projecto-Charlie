@@ -1,4 +1,4 @@
-package ayds.dictionary.charlie.model.Service;
+package Service;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

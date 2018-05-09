@@ -27,12 +27,12 @@ class TermModelImp implements TermModel {
 
     @Override
     public void searchWord(String searchedWord){
-        String result = repository.searchWord(searchedWord);
-        if (result != "" && result != null)
-            notifyListener(result);
+        Concept concept = repository.searchWord(searchedWord);
+        if (concept != null)
+            notifyListener(concept);
     }
 
-    private void notifyListener(String lastSearch) {
+    private void notifyListener(Concept lastSearch) {
         if (listener != null) {
             listener.didUpdate(lastSearch);
         }

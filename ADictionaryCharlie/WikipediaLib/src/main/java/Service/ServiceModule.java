@@ -1,4 +1,5 @@
-package ayds.dictionary.charlie.model.Service;
+package Service;
+
 
 public class ServiceModule {
     private static ServiceModule instance;
@@ -6,7 +7,6 @@ public class ServiceModule {
 
     private ServiceModule() {
         Transform transform = new JSONToString();
-
         service = new BighugelabsService(transform);
     }
 

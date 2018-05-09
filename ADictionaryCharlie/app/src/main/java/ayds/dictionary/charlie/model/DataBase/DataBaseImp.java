@@ -3,8 +3,10 @@ package ayds.dictionary.charlie.model.DataBase;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 
-import ayds.dictionary.charlie.model.DataBase.room.Concept;
+import ayds.dictionary.charlie.model.Concept;
+import ayds.dictionary.charlie.model.DataBase.room.ConceptDB;
 import ayds.dictionary.charlie.model.DataBase.room.ConceptDataBase;
+import ayds.dictionary.charlie.model.Source;
 
 class DataBaseImp implements DataBase {
 
@@ -27,20 +29,24 @@ class DataBaseImp implements DataBase {
                               ConceptDataBase.class, "dictionary.db").build();
   }
 
-  public void saveTerm(String term, String meaning, int source) {
-    Concept concept =  new Concept();
-    concept.setTerm(term);
-    concept.setMeaning(meaning);
-    concept.setSource(source);  // PREGUNTAR !!!!!!!!!
-    db.termDao().insert(concept);
+  public void saveTerm(Concept myConcept) {
+    ConceptDB conceptDB =  new ConceptDB();
+    conceptDB.setTerm(myConcept.getConcept());
+    conceptDB.setMeaning(myConcept.getMeaning());
+    conceptDB.setSource(myConcept.getSource().ordinal());
+    db.termDao().insert(conceptDB);
   }
 
-  public String getMeaning(String term) {
+  public Concept getMeaning(String term) {
 
-    Concept concept = db.termDao().findByName(term);
+    ConceptDB conceptDB = db.termDao().findByName(term);
 
-    if (concept != null) {
-      return concept.getMeaning();
+    if (conceptDB != null) {
+      Concept concept = new Concept();
+      concept.setConcept(conceptDB.getTerm());
+      concept.setMeaning(conceptDB.getMeaning());
+      concept.setSource(Source.values()[conceptDB.getSource()]);
+      return concept;
     }
     return null;
   }

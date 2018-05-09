@@ -1,4 +1,4 @@
-package ayds.dictionary.charlie.model.Service;
+package Service;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;

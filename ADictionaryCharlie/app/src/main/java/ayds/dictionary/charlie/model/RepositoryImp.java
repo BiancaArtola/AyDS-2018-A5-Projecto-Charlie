@@ -1,18 +1,20 @@
 package ayds.dictionary.charlie.model;
 
+import java.io.IOException;
+
 import ayds.dictionary.charlie.model.DataBase.DataBase;
 import ayds.dictionary.charlie.model.Errors.ErrorHandler;
-import ayds.dictionary.charlie.model.Service.Service;
+import Service.Service;
 import ayds.dictionary.charlie.model.TypesOfException.BadWordException;
+import ayds.dictionary.charlie.model.TypesOfException.NetworkException;
 
 class RepositoryImp implements Repository{
 
     private DataBase dataBase;
     private Service service;
     private ErrorHandler errorHandler;
+    private Source source;
     private final String prefijo = "[*]";
-    private final String noResult = "No Results";
-    private final String badWordProblem = "Incorrect Word!";
 
     RepositoryImp(DataBase dataBase, Service service, ErrorHandler errorHandler){
         this.dataBase = dataBase;
@@ -21,24 +23,35 @@ class RepositoryImp implements Repository{
     }
 
     @Override
-    public String searchWord(String searchedWord) {
-        String result = "";
+    public Concept searchWord(String searchedWord) {
+        Concept concept = null;
         try {
             boolean isCorrect = checkWordWithoutSymbols(searchedWord);
             if (isCorrect) {
-                result = dataBase.getMeaning(searchedWord);
-                if (result != null) { // exists in DB
-                    result = prefijo + result;
+                concept = dataBase.getMeaning(searchedWord);
+                if (concept != null) {
+                    String newMeaning = prefijo + concept.getMeaning();
+                    concept.setMeaning(newMeaning);
                 } else {
-                    result = service.searchWord(searchedWord);
-                    if (!result.equals(noResult))
-                        dataBase.saveTerm(searchedWord, result, service.getSource());  // PREGUNTAR !!!!!!!!!
+                    String result = service.searchWord(searchedWord);
+                    if (result != "") {
+                        concept = new Concept();
+                        concept.setConcept(searchedWord);
+                        concept.setMeaning(result);
+                        concept.setSource(Source.WIKIPEDIA);
+                        dataBase.saveTerm(concept);
+                    } else {
+                        concept = new NullConcept();
+                        concept.setSource(Source.WIKIPEDIA);
+                    }
                 }
             }
+        } catch (IOException e) {
+            errorHandler.errorEvent(new NetworkException());
         } catch (Exception exception){
             errorHandler.errorEvent(exception);
         }
-        return result;
+        return concept;
     }
 
     private boolean checkWordWithoutSymbols(String searchWord) throws BadWordException {
@@ -51,7 +64,7 @@ class RepositoryImp implements Repository{
             }
         }
         if(!isWordWithoutSymbols){
-            throw new BadWordException(badWordProblem);
+            throw new BadWordException();
         }
         return isWordWithoutSymbols;
     }
