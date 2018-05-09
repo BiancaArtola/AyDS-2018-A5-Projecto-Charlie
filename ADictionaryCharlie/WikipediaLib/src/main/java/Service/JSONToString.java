@@ -27,7 +27,6 @@ class JSONToString implements Transform{
     }
 
     private void searchNouns(JsonObject jobj, StringBuilder extract){
-        // nouns
         if (jobj.get("noun") != null) {
             JsonObject noun = jobj.get("noun").getAsJsonObject();
             JsonArray syn = noun.get("syn").getAsJsonArray();
@@ -42,7 +41,6 @@ class JSONToString implements Transform{
     }
 
     private void searchVerbs(JsonObject jobj, StringBuilder extract){
-        // verbs
         if (jobj.get("verb") != null) {
             JsonObject verb = jobj.get("verb").getAsJsonObject();
             JsonArray syn = verb.get("syn").getAsJsonArray();
