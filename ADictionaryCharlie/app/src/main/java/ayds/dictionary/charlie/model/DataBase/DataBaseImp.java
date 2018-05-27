@@ -26,7 +26,9 @@ class DataBaseImp implements DataBase {
 
   private void createNewDatabase(Context context) {
     db = Room.databaseBuilder(context,
-                              ConceptDataBase.class, "dictionary.db").build();
+                              ConceptDataBase.class, "dictionary.db")
+        .fallbackToDestructiveMigration()
+        .build();
   }
 
   public void saveTerm(Concept myConcept) {
