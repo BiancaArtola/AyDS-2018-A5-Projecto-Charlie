@@ -1,4 +1,4 @@
-package ayds.dictionary.charlie.model.Service;
+package Service;
 
 public class ServiceModule {
     private static ServiceModule instance;

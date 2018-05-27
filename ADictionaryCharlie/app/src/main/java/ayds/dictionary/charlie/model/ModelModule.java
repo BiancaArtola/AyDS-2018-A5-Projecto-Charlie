@@ -4,8 +4,8 @@ import ayds.dictionary.charlie.model.DataBase.DataBase;
 import ayds.dictionary.charlie.model.DataBase.DataBaseModule;
 import ayds.dictionary.charlie.model.Errors.ErrorHandler;
 import ayds.dictionary.charlie.model.Errors.ErrorModule;
-import ayds.dictionary.charlie.model.Service.Service;
-import ayds.dictionary.charlie.model.Service.ServiceModule;
+import Service.Service;
+import Service.ServiceModule;
 
 public class ModelModule {
 

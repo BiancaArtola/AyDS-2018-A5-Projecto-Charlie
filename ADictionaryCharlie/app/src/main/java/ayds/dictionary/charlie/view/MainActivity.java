@@ -6,8 +6,11 @@ import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import ayds.dictionary.charlie.R;
+import ayds.dictionary.charlie.model.Concept;
 import ayds.dictionary.charlie.model.Errors.ErrorListener;
 import ayds.dictionary.charlie.model.NewTermListener;
 
@@ -15,8 +18,9 @@ public class MainActivity  extends AppCompatActivity {
 
     private EditText searchField;
     private Button goButton;
-    private TextView resultField;
+    private TextView resultField, source;
     private ViewModule viewModule;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -31,6 +35,9 @@ public class MainActivity  extends AppCompatActivity {
         searchField = findViewById(R.id.searchField);
         goButton = findViewById(R.id.goButton);
         resultField = findViewById(R.id.resultField);
+        progressBar = findViewById(R.id.progressBar);
+        source = findViewById(R.id.source);
+        progressBar.setVisibility(View.GONE);
     }
 
     private void initModule(){
@@ -41,6 +48,7 @@ public class MainActivity  extends AppCompatActivity {
     private void initListeners() {
         goButton.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
+                progressBar.setVisibility(View.VISIBLE);
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -53,7 +61,7 @@ public class MainActivity  extends AppCompatActivity {
 
         viewModule.getTermModel().setNewTermListener(new NewTermListener() {
             @Override
-            public void didUpdate(String lastSearch) {
+            public void didUpdate(Concept lastSearch) {
                 updateResult(lastSearch);
             }
         });
@@ -67,23 +75,36 @@ public class MainActivity  extends AppCompatActivity {
         });
     }
 
-    private void updateResult(final String lastSearch){
+    private void updateResult(final Concept lastSearch){
         String searchedWord = searchField.getText().toString();
-        final String textToPrint = ResultToBold.textToHtml(lastSearch,searchedWord);
+        final String textToPrint = ResultToBold.textToHtml(lastSearch.getMeaning(),searchedWord);
+        final String sourceToPrint = lastSearch.getSource().toString();
         resultField.post(new Runnable() {
             @Override
             public void run() {
                 resultField.setText(Html.fromHtml(textToPrint));
+                source.setText(sourceToPrint);
+                progressBar.setVisibility(View.GONE);
             }
         });
+
     }
 
     private void showErrorMessage(final String message){
         resultField.post(new Runnable() {
             @Override
             public void run() {
-                resultField.setText(message);
+                resultField.setText("");
+                source.setText("");
+                progressBar.setVisibility(View.GONE);
+                showPopUp(message);
             }
         });
+    }
+
+    private void showPopUp(String message) {
+        int duration = Toast.LENGTH_LONG;
+        Toast toast = Toast.makeText(getApplicationContext(), message, duration);
+        toast.show();
     }
 }
