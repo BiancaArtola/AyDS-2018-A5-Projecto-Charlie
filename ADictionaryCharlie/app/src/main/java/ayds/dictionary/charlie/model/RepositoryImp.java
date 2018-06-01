@@ -37,11 +37,11 @@ class RepositoryImp implements Repository{
                         concept = new Concept();
                         concept.setConcept(searchedWord);
                         concept.setMeaning(result);
-                        concept.setSource(Source.WIKIPEDIA);
+                        concept.setSource(Source.BigHugeLabs);
                         dataBase.saveTerm(concept);
                     } else {
                         concept = new NullConcept();
-                        concept.setSource(Source.WIKIPEDIA);
+                        concept.setSource(Source.BigHugeLabs);
                     }
                 }
             }
