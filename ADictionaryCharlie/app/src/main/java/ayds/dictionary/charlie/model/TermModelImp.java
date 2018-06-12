@@ -1,5 +1,7 @@
 package ayds.dictionary.charlie.model;
 
+import java.util.ArrayList;
+
 import ayds.dictionary.charlie.model.Errors.ErrorHandler;
 import ayds.dictionary.charlie.model.Errors.ErrorListener;
 
@@ -27,14 +29,14 @@ class TermModelImp implements TermModel {
 
     @Override
     public void searchWord(String searchedWord){
-        Concept concept = repository.searchWord(searchedWord);
-        if (concept != null)
-            notifyListener(concept);
+        ArrayList<Concept> conceptArrayList = repository.searchWord(searchedWord);
+        if (!conceptArrayList.isEmpty())
+            notifyListener(conceptArrayList);
     }
 
-    private void notifyListener(Concept lastSearch) {
+    private void notifyListener(ArrayList<Concept> conceptArrayList) {
         if (listener != null) {
-            listener.didUpdate(lastSearch);
+            listener.didUpdate(conceptArrayList);
         }
     }
 }

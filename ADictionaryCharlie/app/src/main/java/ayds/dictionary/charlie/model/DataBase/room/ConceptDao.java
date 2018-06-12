@@ -12,8 +12,8 @@ public interface ConceptDao {
   @Query("SELECT * FROM ConceptDB")
   List<ConceptDB> getAll();
 
-  @Query("SELECT * FROM ConceptDB WHERE term LIKE :term LIMIT 1")
-  ConceptDB findByName(String term);
+  @Query("SELECT * FROM ConceptDB WHERE term LIKE :term AND source LIKE :source LIMIT 1")  //Cambiar este select y agregar el "source"
+  ConceptDB findByName(String term, int source);
 
   @Insert(onConflict = REPLACE)
   void insert(ConceptDB conceptDB);

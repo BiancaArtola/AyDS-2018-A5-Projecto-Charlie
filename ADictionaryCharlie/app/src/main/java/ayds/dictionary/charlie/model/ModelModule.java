@@ -6,6 +6,8 @@ import ayds.dictionary.charlie.model.Errors.ErrorHandler;
 import ayds.dictionary.charlie.model.Errors.ErrorModule;
 import Service.Service;
 import Service.ServiceModule;
+import ayds.dictionary.charlie.model.Services.ServicesDef;
+import ayds.dictionary.charlie.model.Services.ServicesModule;
 
 public class ModelModule {
 
@@ -14,9 +16,10 @@ public class ModelModule {
 
     private ModelModule() {
         DataBase dataBase = DataBaseModule.getInstance().getDataBase();
-        Service service = ServiceModule.getInstance().getService();
+        //Service service = ServiceModule.getInstance().getService();
+        ServicesDef servicesDef = ServicesModule.getInstance().getServicesDef();
         ErrorHandler errorHandler = ErrorModule.getInstance().getErrorHandler();
-        Repository repository = new RepositoryImp(dataBase,service,errorHandler);
+        Repository repository = new RepositoryImp(dataBase,servicesDef,errorHandler);
         termModel =  new TermModelImp(repository,errorHandler);
     }
 

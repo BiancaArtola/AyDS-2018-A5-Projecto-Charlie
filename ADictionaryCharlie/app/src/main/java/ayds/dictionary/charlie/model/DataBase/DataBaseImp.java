@@ -39,9 +39,9 @@ class DataBaseImp implements DataBase {
     db.termDao().insert(conceptDB);
   }
 
-  public Concept getMeaning(String term) {
+  public Concept getMeaning(String term, Source source) {
 
-    ConceptDB conceptDB = db.termDao().findByName(term);
+    ConceptDB conceptDB = db.termDao().findByName(term, source.ordinal());
 
     if (conceptDB != null) {
       Concept concept = new Concept();

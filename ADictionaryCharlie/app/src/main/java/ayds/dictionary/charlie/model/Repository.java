@@ -1,5 +1,7 @@
 package ayds.dictionary.charlie.model;
 
+import java.util.ArrayList;
+
 public interface Repository {
-    Concept searchWord(String searchedWord);
+    ArrayList<Concept> searchWord(String searchedWord);
 }
