@@ -36,7 +36,7 @@ class RepositoryImp implements Repository{
                         concept.setMeaning(newMeaning);
                     } else {
                         String result = servicesDef.searchWord(searchedWord, source);
-                        if (result != "") {
+                        if (result != "" && result != null) {
                             concept = new Concept();
                             concept.setConcept(searchedWord);
                             concept.setMeaning(result);
@@ -49,13 +49,6 @@ class RepositoryImp implements Repository{
                     }
                     conceptArrayList.add(concept);
                 }
-
-                // Pedir al ServiceDef la lista de enumerados y recorrer la lista.
-                // Iterar sobre la lista de sources y verificar si esta o no en la BD
-                // Si esta en la BD, agregar el concepto a la lista de conceptos, si no
-                // buscar en el servicio, crear el concepto y agregarlo a la lista de conceptos
-                // retornar la lista de conceptos
-
             }
         } catch (IOException e) {
             errorHandler.errorEvent(new NetworkException());

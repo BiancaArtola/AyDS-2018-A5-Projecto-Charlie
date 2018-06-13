@@ -9,6 +9,9 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+
 import ayds.dictionary.charlie.R;
 import ayds.dictionary.charlie.model.Concept;
 import ayds.dictionary.charlie.model.Errors.ErrorListener;
@@ -18,7 +21,7 @@ public class MainActivity  extends AppCompatActivity {
 
     private EditText searchField;
     private Button goButton;
-    private TextView resultField, source;
+    private TextView resultField;
     private ViewModule viewModule;
     private ProgressBar progressBar;
 
@@ -36,7 +39,6 @@ public class MainActivity  extends AppCompatActivity {
         goButton = findViewById(R.id.goButton);
         resultField = findViewById(R.id.resultField);
         progressBar = findViewById(R.id.progressBar);
-        source = findViewById(R.id.source);
         progressBar.setVisibility(View.GONE);
     }
 
@@ -61,8 +63,8 @@ public class MainActivity  extends AppCompatActivity {
 
         viewModule.getTermModel().setNewTermListener(new NewTermListener() {
             @Override
-            public void didUpdate(Concept lastSearch) {
-                updateResult(lastSearch);
+            public void didUpdate(ArrayList<Concept> conceptArrayList) {
+                updateResult(conceptArrayList);
             }
         });
 
@@ -75,15 +77,19 @@ public class MainActivity  extends AppCompatActivity {
         });
     }
 
-    private void updateResult(final Concept lastSearch){
-        String searchedWord = searchField.getText().toString();
-        final String textToPrint = ResultToBold.textToHtml(lastSearch.getMeaning(),searchedWord);
-        final String sourceToPrint = lastSearch.getSource().toString();
+    private void updateResult(ArrayList<Concept> conceptArrayList){
+        String textToPrint = "";
+        for (Concept concept: conceptArrayList){
+            textToPrint += "<b>"+concept.getSource().toString()+"</b>";
+            textToPrint += "<br>";
+            textToPrint += concept.getMeaning();
+            textToPrint += "<br>";
+        }
+        final String textToPrintFinal = textToPrint;
         resultField.post(new Runnable() {
             @Override
             public void run() {
-                resultField.setText(Html.fromHtml(textToPrint));
-                source.setText(sourceToPrint);
+                resultField.setText(Html.fromHtml(textToPrintFinal));
                 progressBar.setVisibility(View.GONE);
             }
         });
@@ -95,7 +101,6 @@ public class MainActivity  extends AppCompatActivity {
             @Override
             public void run() {
                 resultField.setText("");
-                source.setText("");
                 progressBar.setVisibility(View.GONE);
                 showPopUp(message);
             }

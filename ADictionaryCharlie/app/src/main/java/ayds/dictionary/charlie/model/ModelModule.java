@@ -14,7 +14,6 @@ public class ModelModule {
 
     private ModelModule() {
         DataBase dataBase = DataBaseModule.getInstance().getDataBase();
-        //BighugelabsService service = BighugelabsServiceModule.getInstance().getBighugelabsService();
         ServicesDef servicesDef = ServicesModule.getInstance().getServicesDef();
         ErrorHandler errorHandler = ErrorModule.getInstance().getErrorHandler();
         Repository repository = new RepositoryImp(dataBase,servicesDef,errorHandler);

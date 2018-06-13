@@ -1,11 +1,18 @@
 package ayds.dictionary.charlie.model.Services;
 
 
+import services.Service;
+import services.ServiceModule;
+
 public class ServiceYandexAdapter implements Services {
 
     private static ServiceYandexAdapter instance;
+    private Service yandexService;
 
-    private ServiceYandexAdapter(){}
+
+    private ServiceYandexAdapter(){
+        yandexService = ServiceModule.getInstance().getRemoteSource();
+    }
 
     public static ServiceYandexAdapter getInstance(){
         if(instance == null) {
@@ -15,6 +22,6 @@ public class ServiceYandexAdapter implements Services {
     }
 
     public String searchWord(String term) throws Exception{
-        return null;
+        return yandexService.getMeaning(term);
     }
 }

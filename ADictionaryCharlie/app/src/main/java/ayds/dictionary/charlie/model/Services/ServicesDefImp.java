@@ -1,7 +1,5 @@
 package ayds.dictionary.charlie.model.Services;
 
-import java.io.IOException;
-
 import ayds.dictionary.charlie.model.Source;
 
 public class ServicesDefImp implements ServicesDef {
@@ -18,8 +16,9 @@ public class ServicesDefImp implements ServicesDef {
     }
 
     @Override
-    public String searchWord(String term, Source source) throws IOException {
+    public String searchWord(String term, Source source) throws Exception {
         Services service = factory.getService(source);
-        return service.searchWord(term);
+        String result = service.searchWord(term);
+        return result;
     }
 }

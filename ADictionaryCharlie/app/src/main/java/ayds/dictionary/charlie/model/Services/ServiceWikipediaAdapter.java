@@ -1,12 +1,15 @@
 package ayds.dictionary.charlie.model.Services;
 
+import wikipedia.service.WikipediaService;
+import wikipedia.service.WikipediaServiceModule;
+
 public class ServiceWikipediaAdapter implements Services {
 
     private static ServiceWikipediaAdapter instance;
     private WikipediaService wikipediaService;
 
     private ServiceWikipediaAdapter(){
-
+        wikipediaService = WikipediaServiceModule.getInstance().getService();
     }
 
     public static ServiceWikipediaAdapter getInstance(){
@@ -17,6 +20,6 @@ public class ServiceWikipediaAdapter implements Services {
     }
 
     public String searchWord(String term) throws Exception{
-        return wikipediaService.searchWord(term);
+        return wikipediaService.getMeaning(term);
     }
 }
