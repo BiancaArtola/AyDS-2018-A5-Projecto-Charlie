@@ -1,0 +1,9 @@
+[submodule "ADictionaryCharlie/BigHugeLabsService"]
+	path = ADictionaryCharlie/BigHugeLabsService
+	url = https://github.com/juanolmedo1/BighugelabsLib.git
+[submodule "ADictionaryCharlie/wikipediaservice"]
+	path = ADictionaryCharlie/wikipediaservice
+	url = https://github.com/astreiten/wikipediaservice.git
+[submodule "ADictionaryCharlie/YandexService"]
+	path = ADictionaryCharlie/YandexService
+	url = https://github.com/LeandroAmigo/YandexService.git

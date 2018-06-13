@@ -1788,3 +1788,5 @@ ADictionaryCharlie/app/build/intermediates/transforms/dexBuilder/debug/120/andro
 ADictionaryCharlie/app/build/intermediates/transforms/dexBuilder/debug/120/android/support/graphics/drawable/R$layout.dex
 ADictionaryCharlie/app/build/intermediates/transforms/dexBuilder/debug/120/android/support/graphics/drawable/R$integer.dex
 ADictionaryCharlie/app/build/intermediates/transforms/dexBuilder/debug/120/android/support/graphics/drawable/R$id.dex
+ADictionaryCharlie/.idea/libraries/junit_4_12.xml
+ADictionaryCharlie/.idea/libraries/hamcrest_core_1_3.xml
