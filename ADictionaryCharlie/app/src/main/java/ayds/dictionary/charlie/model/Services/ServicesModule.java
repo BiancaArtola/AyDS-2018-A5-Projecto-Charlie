@@ -1,16 +1,15 @@
 package ayds.dictionary.charlie.model.Services;
 
-import ayds.dictionary.charlie.model.Source;
-
 public class ServicesModule {
     private static ServicesModule instance;
     private ServicesDef servicesDef;
 
     private ServicesModule(){
-        ServiceBigHugeLabsAdapter bigHugeLabsAdapter = new ServiceBigHugeLabsAdapter();
-        ServiceWikipediaAdapter wikipediaAdapter = new ServiceWikipediaAdapter();
-        ServiceYandexAdapter yandexAdapter = new ServiceYandexAdapter();
-        servicesDef = new ServicesDefImp(bigHugeLabsAdapter, wikipediaAdapter, yandexAdapter);
+        Services bigHugeLabsAdapter = ServiceBigHugeLabsAdapter.getInstance();
+        Services wikipediaAdapter = ServiceWikipediaAdapter.getInstance();
+        Services yandexAdapter = ServiceYandexAdapter.getInstance();
+        ServiceFactory factory = new ServiceFactory(bigHugeLabsAdapter, wikipediaAdapter, yandexAdapter);
+        servicesDef = new ServicesDefImp(factory);
     }
 
     public static ServicesModule getInstance(){

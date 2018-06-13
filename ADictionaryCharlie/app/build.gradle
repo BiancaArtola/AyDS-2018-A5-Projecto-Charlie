@@ -29,4 +29,6 @@ dependencies {
   annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
 
   implementation project(':BighugelabsLib')
+  implementation project(':YandexService')
+  implementation project(':wikipediaservice')
 }

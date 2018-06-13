@@ -3,8 +3,8 @@
 	path = ADictionaryCharlie/BighugelabsLib
 	url = https://github.com/juanolmedo1/BighugelabsLib.git
 [submodule "YandexService"]
-	path = YandexService
+	path = ADictionaryCharlie/YandexService
 	url = https://github.com/LeandroAmigo/YandexService
 [submodule "wikipediaservice"]
-	path = wikipediaservice
+	path = ADictionaryCharlie/wikipediaservice
 	url = https://github.com/astreiten/wikipediaservice

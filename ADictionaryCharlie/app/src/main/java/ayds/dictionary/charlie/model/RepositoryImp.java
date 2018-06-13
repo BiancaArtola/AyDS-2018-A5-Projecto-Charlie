@@ -2,11 +2,9 @@ package ayds.dictionary.charlie.model;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import ayds.dictionary.charlie.model.DataBase.DataBase;
 import ayds.dictionary.charlie.model.Errors.ErrorHandler;
-import Service.Service;
 import ayds.dictionary.charlie.model.Services.ServicesDef;
 import ayds.dictionary.charlie.model.TypesOfException.BadWordException;
 import ayds.dictionary.charlie.model.TypesOfException.NetworkException;
@@ -31,7 +29,7 @@ class RepositoryImp implements Repository{
             boolean isCorrect = checkWordWithoutSymbols(searchedWord);
             if (isCorrect) {
                 Concept concept;
-                for(Source source: servicesDef.getSources()){   // for(int i = 0; i < services.getSources(); i++) ???
+                for(Source source: servicesDef.getSources()){
                     concept = dataBase.getMeaning(searchedWord, source);
                     if (concept != null) {
                         String newMeaning = prefijo + concept.getMeaning();

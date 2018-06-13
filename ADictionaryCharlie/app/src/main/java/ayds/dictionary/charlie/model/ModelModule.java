@@ -4,8 +4,6 @@ import ayds.dictionary.charlie.model.DataBase.DataBase;
 import ayds.dictionary.charlie.model.DataBase.DataBaseModule;
 import ayds.dictionary.charlie.model.Errors.ErrorHandler;
 import ayds.dictionary.charlie.model.Errors.ErrorModule;
-import Service.Service;
-import Service.ServiceModule;
 import ayds.dictionary.charlie.model.Services.ServicesDef;
 import ayds.dictionary.charlie.model.Services.ServicesModule;
 
@@ -16,7 +14,7 @@ public class ModelModule {
 
     private ModelModule() {
         DataBase dataBase = DataBaseModule.getInstance().getDataBase();
-        //Service service = ServiceModule.getInstance().getService();
+        //BighugelabsService service = BighugelabsServiceModule.getInstance().getBighugelabsService();
         ServicesDef servicesDef = ServicesModule.getInstance().getServicesDef();
         ErrorHandler errorHandler = ErrorModule.getInstance().getErrorHandler();
         Repository repository = new RepositoryImp(dataBase,servicesDef,errorHandler);
