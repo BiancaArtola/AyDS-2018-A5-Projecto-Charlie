@@ -83,7 +83,7 @@ public class MainActivity  extends AppCompatActivity {
             textToPrint += "<b>"+concept.getSource().toString()+"</b>";
             textToPrint += "<br>";
             textToPrint += concept.getMeaning();
-            textToPrint += "<br>";
+            textToPrint += "<br><br>";
         }
         final String textToPrintFinal = textToPrint;
         resultField.post(new Runnable() {

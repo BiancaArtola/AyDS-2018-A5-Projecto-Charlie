@@ -14,7 +14,7 @@ class RepositoryImp implements Repository{
     private DataBase dataBase;
     private ServicesDef servicesDef;
     private ErrorHandler errorHandler;
-    private final String prefijo = "[*]";
+    private final String prefijo = "[*] ";
 
     RepositoryImp(DataBase dataBase, ServicesDef servicesDef, ErrorHandler errorHandler){
         this.dataBase = dataBase;
