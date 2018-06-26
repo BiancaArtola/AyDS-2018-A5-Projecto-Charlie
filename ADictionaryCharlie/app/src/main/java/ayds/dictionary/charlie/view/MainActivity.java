@@ -11,11 +11,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import ayds.dictionary.charlie.R;
 import ayds.dictionary.charlie.model.Concept;
 import ayds.dictionary.charlie.model.Errors.ErrorListener;
 import ayds.dictionary.charlie.model.NewTermListener;
+import ayds.dictionary.charlie.model.Source;
 
 public class MainActivity  extends AppCompatActivity {
 
@@ -71,8 +73,8 @@ public class MainActivity  extends AppCompatActivity {
         viewModule.getTermModel().setErrorListener(new ErrorListener() {
             @Override
             public void notifyError(Exception exception) {
-                String msgToPrint = exception.getMessage();
-                showErrorMessage(msgToPrint);
+                String errorMessage = exception.getMessage();
+                showErrorMessage(errorMessage);
             }
         });
     }
@@ -96,13 +98,12 @@ public class MainActivity  extends AppCompatActivity {
 
     }
 
-    private void showErrorMessage(final String message){
+    private void showErrorMessage(final String errorMessage){
         resultField.post(new Runnable() {
             @Override
             public void run() {
-                resultField.setText("");
                 progressBar.setVisibility(View.GONE);
-                showPopUp(message);
+                showPopUp(errorMessage);
             }
         });
     }

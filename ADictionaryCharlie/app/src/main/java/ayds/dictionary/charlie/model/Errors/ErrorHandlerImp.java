@@ -1,6 +1,7 @@
 package ayds.dictionary.charlie.model.Errors;
 
-import ayds.dictionary.charlie.model.TypesOfException.ApplicationException;
+import java.util.Map;
+import ayds.dictionary.charlie.model.Source;
 
 class ErrorHandlerImp implements ErrorHandler{
 
@@ -12,14 +13,13 @@ class ErrorHandlerImp implements ErrorHandler{
     }
 
     @Override
-    public void errorEvent(Exception exception) {
+    public void errorEvent(Map<Source,Exception> mapeoException) {
+        String errorText = "\n";
         if (errorListener != null) {
-            if (exception instanceof ApplicationException) {
-                errorListener.notifyError(exception);
-            } else {
-                Exception newException = new Exception("Ocurrio un error inesperado.");
-                errorListener.notifyError(newException);
+            for (Map.Entry<Source,Exception> entry:  mapeoException.entrySet()){
+                errorText += entry.getKey().toString() + ": " + entry.getValue().getMessage() + "\n";
             }
+            errorListener.notifyError(new Exception(errorText));
         }
     }
 }
