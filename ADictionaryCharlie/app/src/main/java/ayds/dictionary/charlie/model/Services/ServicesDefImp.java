@@ -2,11 +2,11 @@ package ayds.dictionary.charlie.model.Services;
 
 import ayds.dictionary.charlie.model.Source;
 
-public class ServicesDefImp implements ServicesDef {
+class ServicesDefImp implements ServicesDef {
 
-    private ServiceFactory factory;
+    private ServiceAbstractFactory factory;
 
-    protected ServicesDefImp(ServiceFactory factory){
+    ServicesDefImp(ServiceAbstractFactory factory){
         this.factory = factory;
     }
 

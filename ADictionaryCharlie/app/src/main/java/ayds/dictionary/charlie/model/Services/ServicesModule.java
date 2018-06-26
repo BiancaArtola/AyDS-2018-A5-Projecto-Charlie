@@ -8,7 +8,7 @@ public class ServicesModule {
         Services bigHugeLabsAdapter = ServiceBigHugeLabsAdapter.getInstance();
         Services wikipediaAdapter = ServiceWikipediaAdapter.getInstance();
         Services yandexAdapter = ServiceYandexAdapter.getInstance();
-        ServiceFactory factory = new ServiceFactory(bigHugeLabsAdapter, wikipediaAdapter, yandexAdapter);
+        ServiceAbstractFactory factory = new ServiceFactory(bigHugeLabsAdapter, wikipediaAdapter, yandexAdapter);
         servicesDef = new ServicesDefImp(factory);
     }
 

@@ -3,7 +3,7 @@ package ayds.dictionary.charlie.model.Services;
 import wikipedia.service.WikipediaService;
 import wikipedia.service.WikipediaServiceModule;
 
-public class ServiceWikipediaAdapter implements Services {
+class ServiceWikipediaAdapter implements Services {
 
     private static ServiceWikipediaAdapter instance;
     private WikipediaService wikipediaService;
@@ -12,7 +12,7 @@ public class ServiceWikipediaAdapter implements Services {
         wikipediaService = WikipediaServiceModule.getInstance().getService();
     }
 
-    public static ServiceWikipediaAdapter getInstance(){
+    static ServiceWikipediaAdapter getInstance(){
         if(instance == null) {
             instance =  new ServiceWikipediaAdapter();
         }

@@ -4,7 +4,7 @@ package ayds.dictionary.charlie.model.Services;
 import services.Service;
 import services.ServiceModule;
 
-public class ServiceYandexAdapter implements Services {
+class ServiceYandexAdapter implements Services {
 
     private static ServiceYandexAdapter instance;
     private Service yandexService;
@@ -14,7 +14,7 @@ public class ServiceYandexAdapter implements Services {
         yandexService = ServiceModule.getInstance().getRemoteSource();
     }
 
-    public static ServiceYandexAdapter getInstance(){
+    static ServiceYandexAdapter getInstance(){
         if(instance == null) {
             instance =  new ServiceYandexAdapter();
         }

@@ -4,7 +4,7 @@ import ayds.dictionary.charlie.model.TypesOfException.BadWordException;
 import ayds.dictionary.charlie.service.BighugelabsService;
 import ayds.dictionary.charlie.service.BighugelabsServiceModule;
 
-public class ServiceBigHugeLabsAdapter implements Services {
+class ServiceBigHugeLabsAdapter implements Services {
 
     private static ServiceBigHugeLabsAdapter instance;
     private BighugelabsService bighugelabsService;
@@ -13,7 +13,7 @@ public class ServiceBigHugeLabsAdapter implements Services {
         bighugelabsService = BighugelabsServiceModule.getInstance().getBighugelabsService();
     }
 
-    public static ServiceBigHugeLabsAdapter getInstance(){
+    static ServiceBigHugeLabsAdapter getInstance(){
         if(instance == null) {
             instance =  new ServiceBigHugeLabsAdapter();
         }
